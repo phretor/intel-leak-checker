@@ -11,7 +11,7 @@ happily accept them.
 
 **Warning:** I assume you know what you're doing.
 
-## Usage
+## Standalone Usage
 
 1. first, you need to extract the BIOS/UEFI ROM image from the SPI flash, which
    can be done with [Chipsec](https://chipsec.github.io) or other tools
@@ -36,6 +36,23 @@ $ ./checker.sh affected-rom.bin
 Keys found: you're likely affected.
 
 ```
+
+## FwHunt Scanner
+
+I created a FwHunt rule to perform the same check, so if you're a FwHunt user, you
+can go that way:
+
+1. Add [this rule](https://github.com/phretor/FwHunt/blob/main/rules/Threats/IntelAlderLakeLeak.yml) to
+   your FwHunt ruleset.
+
+2. Run the `scan` command:
+
+```shell
+$ python fwhunt_scan_analyzer.py scan -r ../FwHunt/rules/Threats/IntelAlderLakeLeak.yml rom.bin
+Scanner result IntelAlderLakeLeak (variant: default) FwHunt rule has been triggered and threat detected! (rom.bin)
+```
+
+If you're affected, you'll see the message above. Else, a reassuring, green message will appear.
 
 ## For the curious
 
