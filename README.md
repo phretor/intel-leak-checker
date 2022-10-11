@@ -42,7 +42,7 @@ Keys found: you're likely affected.
 I created a FwHunt rule to perform the same check, so if you're a FwHunt user, you
 can go that way:
 
-1. Add [this rule](https://github.com/phretor/FwHunt/blob/main/rules/Threats/IntelAlderLakeLeak.yml) to
+1. Add [this rule](https://github.com/phretor/FwHunt/blob/main/rules/SupplyChain/IntelAlderLakeLeak.yml) to
    your FwHunt ruleset.
 
 2. Run the `scan` command:
@@ -54,16 +54,6 @@ Scanner result IntelAlderLakeLeak (variant: default) FwHunt rule has been trigge
 
 If you're affected, you'll see the message above. Else, a reassuring, green message will appear.
 
-## For the curious
+## Credits & Thanks
+- [Yegor Vasilenko](https://twitter.com/yeggorv) for [this](https://github.com/binarly-io/FwHunt/pull/7)
 
-I generated the `keys/pubkeys.rsa` file as follows:
-
-```shell
-$ find path/to/leaked/code -type f -iname '*.pem' -exec file {} \; | \
-    grep -i private | grep -vi public | grep -v Python | awk -F\: '{ print $1 }' | \
-    while read f; \
-        do openssl rsa -in "$f" -outform DER 2>/dev/null | \
-            xxd -ps -c 0 | \
-            tee -a pubkeys/keys.rsa ; \
-        done
-```
