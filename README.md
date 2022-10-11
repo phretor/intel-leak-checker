@@ -56,6 +56,18 @@ Scanner result IntelAlderLakeLeak (variant: default) FwHunt rule has been trigge
 
 If you're affected, you'll see the message above. Else, a reassuring, green message will appear.
 
+## How to Generate the Patterens from Private Keys
+
+Export the public key in modulus-exponent format (in hex string) and reverse it.
+
+```bash
+$ openssl rsa -modulus -noout -in privkey.pem | \
+    awk -F= '{print $2}' | \
+    python -c \
+    'import sys; s = sys.stdin.read().strip().lower(); a = [s[i:i+2] for i in range(0, len(s), 2)]; a.reverse(); print("".join(a));'
+
+```
+
 ## Credits & Thanks
 - [Yegor Vasilenko](https://twitter.com/yeggorv) for [this](https://github.com/binarly-io/FwHunt/pull/7)
 
