@@ -11,6 +11,8 @@ happily accept them.
 
 **Warning:** I assume you know what you're doing.
 
+**Warning 2:** Tested on macOS, some users have reported that [`xxd` on Linux behaves differently](https://github.com/phretor/intel-leak-checker/issues/1#issuecomment-1274705257).
+
 ## Standalone Usage
 
 1. first, you need to extract the BIOS/UEFI ROM image from the SPI flash, which
