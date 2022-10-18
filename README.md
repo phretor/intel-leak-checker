@@ -11,7 +11,7 @@ happily accept them.
 
 **Warning:** I assume you know what you're doing.
 
-**Warning 2:** Tested on macOS, some users have reported that [`xxd` on Linux behaves differently](https://github.com/phretor/intel-leak-checker/issues/1#issuecomment-1274705257).
+**Warning 2**: The script was tested mainly on MacOS, in order for the script to work on Linux, make sure to have **`xxd` version 2022-01-14 (coming with [vim 8.2.4088](https://github.com/vim/vim/commit/c0a1d370fa655cea9eaa74f5e605b95825dc9de1)) or newer**, [see more details why here.](https://unix.stackexchange.com/a/706374/287583)
 
 ## Standalone Usage
 
